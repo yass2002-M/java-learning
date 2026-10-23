@@ -15,7 +15,6 @@
 8.  [Boucles](#boucles)
 9.  [Tableaux](#tableaux)
 10. [Méthodes](#méthodes)
-11. [Pièges fréquents](#pièges-fréquents)
 
 ------------------------------------------------------------------------
 
@@ -260,7 +259,7 @@ static int additionner(int a, int b) {
 
 ### Surcharge (*overloading*)
 
-Plusieurs méthodes peuvent porter le même nom si leurs listes de
+Plusieurs méthodes peuvent porter le même nom si leur liste de
 paramètres diffèrent.
 
 ``` java
@@ -283,28 +282,58 @@ surchargées.
 -   **Argument** : valeur transmise lors de l'appel, par exemple `3`
     dans `f(3)`.
 
-## Pièges fréquents
 
--   `while (true)` sans condition de sortie ni `break` peut créer une
-    boucle infinie.
--   Oublier de modifier le compteur d'une boucle peut créer une boucle
-    infinie.
--   Oublier `break` dans un `switch` classique peut provoquer un
-    *fall-through*.
--   Utiliser un index hors limites provoque une
-    `ArrayIndexOutOfBoundsException`.
--   `nombres.length` est un attribut ; contrairement à une méthode, il
-    ne s'écrit pas `nombres.length()`.
--   Une division entre deux entiers (`int`) tronque la partie décimale.
+## String
 
-## Règles à retenir
+### Méthodes principales
 
-1.  Les index d'un tableau commencent à `0`.
-2.  Vérifier la condition d'arrêt et la progression du compteur dans
-    chaque boucle.
-3.  Choisir un type de retour adapté et renvoyer une valeur avec
-    `return` si nécessaire.
-4.  Utiliser des noms explicites et respecter les conventions de
-    nommage.
-5.  Distinguer les paramètres déclarés dans une méthode des arguments
-    transmis lors de son appel.
+```java
+String texte = "Bonjour le monde";
+
+texte.length();                 // Longueur
+texte.charAt(0);                // Caractère à l'index 0
+texte.substring(0, 7);          // "Bonjour"
+texte.toUpperCase();            // Majuscules
+texte.toLowerCase();            // Minuscules
+texte.contains("jour");         // Contient un texte
+texte.startsWith("Bon");        // Commence par un texte
+texte.replace("monde", "Java"); // Remplacement
+```
+
+### Comparaison
+
+```java
+String a = "Java";
+String b = new String("Java");
+
+a.equals(b); // true
+a == b;      // false
+```
+
+- `equals()` : compare le contenu.
+- `==` : compare les références.
+
+### Découpage
+
+```java
+String csv = "pomme,banane,kiwi";
+String[] fruits = csv.split(",");
+
+for (String fruit : fruits) {
+    System.out.println(fruit);
+}
+```
+
+`split()` découpe une chaîne et retourne un tableau.
+
+### Immutabilité
+
+```java
+String s = "hello";
+String sMaj = s.toUpperCase();
+```
+
+Une `String` ne se modifie pas : les transformations retournent une nouvelle chaîne.
+
+
+
