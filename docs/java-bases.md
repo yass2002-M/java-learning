@@ -337,3 +337,19 @@ Une `String` ne se modifie pas : les transformations retournent une nouvelle cha
 
 
 
+## Scanner
+
+Sert à lire ce que l'utilisateur tape au clavier.
+On crée un objet Scanner sur System.in, on appelle nextInt / nextDouble / nextLine, puis on ferme avec close.
+
+Attention : nextInt laisse un retour à la ligne dans le buffer. Il faut appeler nextLine une fois après pour le vider avant de lire une chaîne.
+```java
+import java.util.Scanner;
+
+Scanner sc = new Scanner(System.in);
+int age = sc.nextInt();
+sc.nextLine();
+String nom = sc.nextLine();
+double taille = sc.nextDouble();
+sc.close();
+```
